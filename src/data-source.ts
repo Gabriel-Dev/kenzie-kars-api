@@ -28,6 +28,15 @@ const dataSourceConfig = (): DataSourceOptions => {
     };
   }
 
+  if (nodeEnv === "production") {
+    return {
+      type: "postgres",
+      url: dbUrl,
+      entities: [entitiesPath],
+      migrations: [migrationsPath],
+    };
+  }
+
   return {
     type: "postgres",
     url: dbUrl,

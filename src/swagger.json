@@ -1,0 +1,546 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "api-project-kenzie-kars",
+        "description": "Projeto desenvolvido durante o Módulo 6 da Turma 14 do curso de Desenvolvimento Full Stack da Kenzie Academy Brasil. Trata-se de uma API onde é possível registrar e cadastrar dois tipos de usuários (anunciante e comprador), onde o anunciante pode realizar o cadastro de anúncio, com funções específicas como editar, alterar e excluir. O usuário comprador terá acesso aos anúncios podendo efetuar a compra ou não.",
+        "termsOfService": "",
+        "contact": {
+            "email": "juniororlandocv@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3001/",
+            "description": "API de produção"
+        }
+    ],
+    "paths": {
+        "/addresses/{id}": {
+        "post": {
+            "summary": "Create an address",
+            "tags": ["Addresses"],
+            "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "User ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Address created",
+            "schema": {
+              "$ref": "#/definitions/AddressResponse"
+            }
+          }
+        }
+      }
+    },
+    "/addresses/{addressId}": {
+      "put": {
+        "summary": "Update an address",
+        "tags": ["Addresses"],
+        "parameters": [
+          {
+            "name": "addressId",
+            "in": "path",
+            "description": "Address ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Address updated",
+            "schema": {
+              "$ref": "#/definitions/AddressResponse"
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Retrieve an address",
+        "tags": ["Addresses"],
+        "parameters": [
+          {
+            "name": "addressId",
+            "in": "path",
+            "description": "Address ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Address retrieved",
+            "schema": {
+              "$ref": "#/definitions/AddressResponse"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an address",
+        "tags": ["Addresses"],
+        "parameters": [
+          {
+            "name": "addressId",
+            "in": "path",
+            "description": "Address ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Address deleted"
+          }
+        }
+      }
+    },
+    "/announcements": {
+      "post": {
+        "summary": "Create an announcement",
+        "tags": ["Announcements"],
+        "responses": {
+          "201": {
+            "description": "Announcement created"
+          }
+        }
+      },
+      "get": {
+        "summary": "List announcements",
+        "tags": ["Announcements"],
+        "responses": {
+          "200": {
+            "description": "Announcements retrieved",
+            "schema": {
+              "$ref": "#/definitions/AnnouncementRetriveReturn"
+            }
+          }
+        }
+      }
+    },
+    "/announcements/{id}": {
+      "put": {
+        "summary": "Update an announcement",
+        "tags": ["Announcements"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Announcement ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Announcement updated"
+          }
+        }
+      },
+      "get": {
+        "summary": "Retrieve an announcement",
+        "tags": ["Announcements"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Announcement ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Announcement retrieved"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an announcement",
+        "tags": ["Announcements"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Announcement ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Announcement deleted"
+          }
+        }
+      }
+    },
+    "/images/{id}": {
+      "post": {
+        "summary": "Create an image",
+        "tags": ["Images"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Announcement ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Image created"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update an image",
+        "tags": ["Images"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Image ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image updated"
+          }
+        }
+      },
+      "get": {
+        "summary": "Retrieve an image",
+        "tags": ["Images"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Image ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image retrieved"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an image",
+        "tags": ["Images"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Image ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Image deleted"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "Create a login",
+        "tags": ["Login"],
+        "responses": {
+          "200": {
+            "description": "Login created"
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "summary": "Create a user",
+        "tags": ["Users"],
+        "responses": {
+          "201": {
+            "description": "User created"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "summary": "Retrieve a user",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "User ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User retrieved"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a user",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "User ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User updated"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a user",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "User ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "User deleted"
+          }
+        }
+      }
+    },
+    "/users/{id}/reset-password": {
+      "post": {
+        "summary": "Send reset password email",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "User ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reset password email sent"
+          }
+        }
+      }
+    },
+    "/users/{id}/reset-password/{token}": {
+      "post": {
+        "summary": "Reset password",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "User ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "token",
+            "in": "path",
+            "description": "Reset password token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Password reset successfully"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AnnouncementRequest": {
+        "type": "object",
+        "properties": {
+          "brand": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "year": {
+            "type": "string"
+          },
+          "fuel": {
+            "type": "number"
+          },
+          "mileage": {
+            "type": "number"
+          },
+          "color": {
+            "type": "string"
+          },
+          "price_table_fipe": {
+            "type": "string"
+          },
+          "price": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "published": {
+            "type": "boolean"
+          },
+          "cover_image": {
+            "type": "string"
+          }
+        }
+      },
+      "AnnouncementResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "brand": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "year": {
+            "type": "string"
+          },
+          "fuel": {
+            "type": "number"
+          },
+          "mileage": {
+            "type": "number"
+          },
+          "color": {
+            "type": "string"
+          },
+          "price_table_fipe": {
+            "type": "string"
+          },
+          "price": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "published": {
+            "type": "boolean"
+          },
+          "cover_image": {
+            "type": "string"
+          }
+        }
+      },
+      "ImageRequest": {
+        "type": "object",
+        "properties": {
+          "image": {
+            "type": "string"
+          }
+        }
+      },
+      "ImageResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          }
+        }
+      },
+      "AddressResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "street": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "zip_code": {
+            "type": "string"
+          }
+        }
+      },
+      "UserRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "UserResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          }
+        }
+      },
+      "AnnouncementRetriveReturn": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/AnnouncementResponse"
+        }
+      },
+      "securitySchemes": {
+        "bearerAuth": {
+            "type": "http",
+            "scheme": "bearer",
+            "bearerFormat": "JWT"
+        }
+    }
+  }
+}
+}
